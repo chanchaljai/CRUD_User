@@ -20,7 +20,7 @@ export const createUser = async (req, res) => {
 // get all users
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().sort({createUserdAt: -1});
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: error.message });
