@@ -20,8 +20,12 @@ export const createUser = async (req, res) => {
 // get all users
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().sort({createdAt: -1});
-    res.status(200).json(users);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+    const skip = (page - 1) * limit;
+    const users = await User.find().sort({createdAt: -1}).skip(skip).limit(limit);
+    const total = await User.countDocuments();  // get the total number of users
+    res.status(200).json({success: true, data: users, pagination: {page, limit, total}, totalPage: Math.ceil(total / limit) });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
