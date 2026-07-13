@@ -11,3 +11,4 @@
 - simple form UI create inside return and apply tanStack form concept
 - dropdown country calling code 
 - zod validation
+- tanstack query data get use axios
