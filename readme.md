@@ -12,3 +12,5 @@
 - dropdown country calling code 
 - zod validation
 - tanstack query data get use axios
+- post data create put for edit/update delete for delete
+
